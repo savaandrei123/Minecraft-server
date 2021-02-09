@@ -1,0 +1,321 @@
+---- Minecraft Crash Report ----
+// Why did you do that?
+
+Time: 2/9/21 12:12 AM
+Description: Watching Server
+
+java.lang.Error: Watchdog
+	at java.util.stream.ReferencePipeline.filter(Unknown Source)
+	at avw.b(SourceFile:76)
+	at aqn.dP(SourceFile:736)
+	at aqm.k(SourceFile:2508)
+	at aqn.k(SourceFile:542)
+	at apy.k(SourceFile:127)
+	at azz.k(SourceFile:54)
+	at bac.k(SourceFile:81)
+	at aqm.j(SourceFile:2254)
+	at aqn.j(SourceFile:342)
+	at aag.a(SourceFile:621)
+	at aag$$Lambda$3644/29646189.accept(Unknown Source)
+	at brx.a(SourceFile:561)
+	at aag.a(SourceFile:411)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:871)
+	at zg.b(SourceFile:312)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:811)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:670)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:257)
+	at net.minecraft.server.MinecraftServer$$Lambda$3291/29899651.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at java.util.stream.ReferencePipeline.filter(Unknown Source)
+	at avw.b(SourceFile:76)
+	at aqn.dP(SourceFile:736)
+	at aqm.k(SourceFile:2508)
+	at aqn.k(SourceFile:542)
+	at apy.k(SourceFile:127)
+	at azz.k(SourceFile:54)
+	at bac.k(SourceFile:81)
+	at aqm.j(SourceFile:2254)
+	at aqn.j(SourceFile:342)
+	at aag.a(SourceFile:621)
+	at aag$$Lambda$3644/29646189.accept(Unknown Source)
+	at brx.a(SourceFile:561)
+	at aag.a(SourceFile:411)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:871)
+	at zg.b(SourceFile:312)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:811)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:670)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:257)
+
+-- Thread Dump --
+Details:
+	Threads: "Server Watchdog" Id=49 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at zj.run(SourceFile:49)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Netty Server IO #0" Id=42 RUNNABLE (in native)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl.doSelect(Unknown Source)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@1df922c
+	-  locked java.util.Collections$UnmodifiableSet@1186327
+	-  locked sun.nio.ch.WindowsSelectorImpl@127f95c
+	at sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:62)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:756)
+	...
+
+
+"ObjectCleanerThread" Id=41 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@25691c
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@25691c
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at io.netty.util.internal.ObjectCleaner$1.run(ObjectCleaner.java:54)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"D3D Screen Updater" Id=40 TIMED_WAITING on java.lang.Object@1ecc346
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.Object@1ecc346
+	at sun.java2d.d3d.D3DScreenUpdateManager.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"DestroyJavaVM" Id=38 RUNNABLE
+
+
+"Server thread" Id=27 RUNNABLE
+	at java.util.stream.ReferencePipeline.filter(Unknown Source)
+	at avw.b(SourceFile:76)
+	at aqn.dP(SourceFile:736)
+	at aqm.k(SourceFile:2508)
+	at aqn.k(SourceFile:542)
+	at apy.k(SourceFile:127)
+	at azz.k(SourceFile:54)
+	at bac.k(SourceFile:81)
+	...
+
+
+"Thread-3" Id=34 WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@1db9f47
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@1db9f47
+	at java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+	at java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+	at com.mojang.util.QueueLogAppender.getNextLogEvent(QueueLogAppender.java:77)
+	at zm.a(SourceFile:137)
+	at zm$$Lambda$3306/29315769.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"TimerQueue" Id=35 TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@a9653
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@a9653
+	at java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.util.concurrent.DelayQueue.take(Unknown Source)
+	at javax.swing.TimerQueue.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.locks.ReentrantLock$NonfairSync@1f86bb9
+
+
+"AWT-EventQueue-0" Id=33 RUNNABLE
+	at java.security.AccessController.getStackAccessControlContext(Native Method)
+	at java.security.AccessController.getContext(Unknown Source)
+	at javax.swing.RepaintManager.paintDirtyRegions(Unknown Source)
+	at javax.swing.RepaintManager.paintDirtyRegions(Unknown Source)
+	at javax.swing.RepaintManager.prePaintDirtyRegions(Unknown Source)
+	at javax.swing.RepaintManager.access$1200(Unknown Source)
+	at javax.swing.RepaintManager$ProcessingRunnable.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	...
+
+
+"AWT-Windows" Id=31 RUNNABLE
+	at sun.awt.windows.WToolkit.eventLoop(Native Method)
+	at sun.awt.windows.WToolkit.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"AWT-Shutdown" Id=30 WAITING on java.lang.Object@1a99967
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.Object@1a99967
+	at java.lang.Object.wait(Unknown Source)
+	at sun.awt.AWTAutoShutdown.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Java2D Disposer" Id=29 RUNNABLE (in native)
+	at sun.java2d.d3d.D3DRenderQueue.flushBuffer(Native Method)
+	at sun.java2d.d3d.D3DRenderQueue.flushBuffer(Unknown Source)
+	at sun.java2d.d3d.D3DRenderQueue.flushNow(Unknown Source)
+	at sun.java2d.d3d.D3DSurfaceData.dispose(Unknown Source)
+	at sun.java2d.DefaultDisposerRecord.invokeNativeDispose(Native Method)
+	at sun.java2d.DefaultDisposerRecord.dispose(Unknown Source)
+	at sun.java2d.Disposer.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.locks.ReentrantLock$NonfairSync@511fb2
+
+
+"Snooper Timer" Id=28 WAITING on java.util.TaskQueue@fc02a2
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.util.TaskQueue@fc02a2
+	at java.lang.Object.wait(Unknown Source)
+	at java.util.TimerThread.mainLoop(Unknown Source)
+	at java.util.TimerThread.run(Unknown Source)
+
+
+"Timer hack thread" Id=18 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at x$6.run(SourceFile:636)
+
+
+"Worker-Bootstrap-7" Id=17 RUNNABLE
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.Comp.lambda$one$4(Comp.java:44)
+	at com.mojang.datafixers.functions.Comp$$Lambda$1322/27325826.get(Unknown Source)
+	at java.util.Optional.orElseGet(Unknown Source)
+	at com.mojang.datafixers.functions.Comp.one(Comp.java:44)
+	...
+
+
+"Worker-Bootstrap-6" Id=16 RUNNABLE
+	at java.util.Objects.equals(Unknown Source)
+	at com.mojang.datafixers.types.templates.List.equals(List.java:98)
+	at java.util.Objects.equals(Unknown Source)
+	at com.mojang.datafixers.types.templates.Tag.equals(Tag.java:120)
+	at java.util.Objects.equals(Unknown Source)
+	at com.mojang.datafixers.types.templates.Sum.equals(Sum.java:143)
+	at java.util.Objects.equals(Unknown Source)
+	at com.mojang.datafixers.types.templates.Product.equals(Product.java:144)
+	...
+
+
+"Worker-Bootstrap-5" Id=15 RUNNABLE
+	at com.mojang.datafixers.functions.PointFreeRule.one(PointFreeRule.java:597)
+	at com.mojang.datafixers.functions.PointFreeRule.lambda$once$3(PointFreeRule.java:601)
+	at com.mojang.datafixers.functions.PointFreeRule$$Lambda$552/30085344.get(Unknown Source)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.Apply.one(Apply.java:45)
+	at com.mojang.datafixers.functions.PointFreeRule$One.rewrite(PointFreeRule.java:651)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.Comp.lambda$one$4(Comp.java:44)
+	...
+
+
+"Worker-Bootstrap-4" Id=14 RUNNABLE
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.Apply.one(Apply.java:45)
+	at com.mojang.datafixers.functions.PointFreeRule$One.rewrite(PointFreeRule.java:651)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.Comp.lambda$one$4(Comp.java:44)
+	at com.mojang.datafixers.functions.Comp$$Lambda$1322/27325826.get(Unknown Source)
+	at java.util.Optional.orElseGet(Unknown Source)
+	...
+
+
+"Worker-Bootstrap-3" Id=13 RUNNABLE
+	at java.util.Optional.of(Unknown Source)
+	at java.util.Optional.ofNullable(Unknown Source)
+	at java.util.Optional.map(Unknown Source)
+	at com.mojang.datafixers.functions.Comp.one(Comp.java:43)
+	at com.mojang.datafixers.functions.PointFreeRule$One.rewrite(PointFreeRule.java:651)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.Comp.one(Comp.java:43)
+	at com.mojang.datafixers.functions.PointFreeRule$One.rewrite(PointFreeRule.java:651)
+	...
+
+
+"Worker-Bootstrap-2" Id=12 RUNNABLE
+	at java.lang.invoke.LambdaForm$MH/6793289.linkToTargetMethod(LambdaForm$MH)
+	at com.mojang.datafixers.functions.PointFreeRule$CompRewrite.rewrite(PointFreeRule.java:190)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.Comp.lambda$one$4(Comp.java:44)
+	at com.mojang.datafixers.functions.Comp$$Lambda$1322/27325826.get(Unknown Source)
+	...
+
+
+"Worker-Bootstrap-1" Id=11 RUNNABLE
+	at com.mojang.datafixers.functions.Functions.comp(Functions.java:27)
+	at com.mojang.datafixers.functions.Comp.lambda$one$2(Comp.java:43)
+	at com.mojang.datafixers.functions.Comp$$Lambda$1319/24485716.apply(Unknown Source)
+	at java.util.Optional.map(Unknown Source)
+	at com.mojang.datafixers.functions.Comp.one(Comp.java:43)
+	at com.mojang.datafixers.functions.PointFreeRule$One.rewrite(PointFreeRule.java:651)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.Comp.one(Comp.java:43)
+	...
+
+
+"Attach Listener" Id=5 RUNNABLE
+
+
+"Signal Dispatcher" Id=4 RUNNABLE
+
+
+"Finalizer" Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@44aee0
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@44aee0
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@16b772e
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@16b772e
+	at java.lang.Object.wait(Unknown Source)
+	at java.lang.ref.Reference.tryHandlePending(Unknown Source)
+	at java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+
+
+Stacktrace:
+	at zj.run(SourceFile:65)
+	at java.lang.Thread.run(Unknown Source)
+
+-- Performance stats --
+Details:
+	Random tick rate: 3
+	Level stats: ResourceKey[minecraft:dimension / minecraft:overworld]: players: 0, entities: 209 [minecraft:sheep:30,minecraft:skeleton:27,minecraft:creeper:24,minecraft:chicken:22,minecraft:pig:21], block_entities: 18 [minecraft:mob_spawner:8,minecraft:beehive:5,minecraft:chest:5], block_ticks: 10840, fluid_ticks: 238, chunk_source: ServerChunkCache: 2025,
+ResourceKey[minecraft:dimension / minecraft:the_nether]: players: 0, entities: 0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: ServerChunkCache: 0,
+ResourceKey[minecraft:dimension / minecraft:the_end]: players: 0, entities: 0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: ServerChunkCache: 0
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 10 (x86) version 10.0
+	Java Version: 1.8.0_281, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) Client VM (mixed mode, sharing), Oracle Corporation
+	Memory: 8877904 bytes (8 MB) / 259522560 bytes (247 MB) up to 259522560 bytes (247 MB)
+	CPUs: 8
+	JVM Flags: 0 total; 
+	Player Count: 0 / 20; []
+	Data Packs: vanilla
+	Is Modded: Unknown (can't tell)
+	Type: Dedicated Server (map_server.txt)
